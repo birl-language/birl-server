@@ -5,7 +5,7 @@
 *
 ***********************************************************************/
 module.exports = function (file, stdin, res) {
-  const exec = require('child_process').exec("./" + file);
+  const exec = require('child_process').exec("timeout 5s ./" + file); // Executa o arquivo com timeout de 5s
   const fs = require('fs');
   var out;
   var err;
@@ -27,7 +27,7 @@ module.exports = function (file, stdin, res) {
 
   exec.on('close', function (ret) {
     console.log("Return: " + ret);
-    
+
     // Apagando os arquivos criados
     fs.unlink(file + '.c', function () {});
     fs.unlink(file, function () {});
@@ -39,7 +39,3 @@ module.exports = function (file, stdin, res) {
                               return: ret }));
   });
 }
-
-/*//////////////////////////////////////////////////////////////////////
-//////FAZER BUGAR DEPOIS DE UM TEMPO, MELHORAR SINTAXE////////////
-//////////////////////////////////////////////////////////////////////*/
