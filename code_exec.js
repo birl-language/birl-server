@@ -10,7 +10,7 @@ var crypto = require('crypto');
 // Cria um valor hexadecimal com tamanho len
 function randomValueHex (len) {
     return crypto.randomBytes(Math.ceil(len/2))
-        .toString('hex');
+        .toString('hex')
         .slice(0,len);
 };
 
@@ -23,10 +23,13 @@ module.exports = function (bCode, stdin, res) {
   var rName = randomValueHex(15).toString();
 
   fs.writeFile(rName + ".c", code, function (err) {
-    // se ocorrer erro, retorna pela res
+    // se ocorrer erro, retorna JSON 
     if (err) {
       res.setHeader('Content-Type', 'application/json');
-      res.end(JSON.stringify({ error:  "ERRO INTERNO CUMPADI\n" }));
+      res.end(JSON.stringify({  error: "ERRO INTERNO PAI!\n",
+                                stdout: null,
+                                stderr: null,
+                                return: null }));
       return;
     }
 

@@ -5,6 +5,7 @@
 ***********************************************************************/
 module.exports = function (file, stdin, res) {
   const exec = require('child_process').exec;
+  const fs = require('fs');
   const run = require('./exec.js');
 
   // compila com o gcc
@@ -13,9 +14,11 @@ module.exports = function (file, stdin, res) {
     if (error) {
       console.log ("ERROR: " + error);
       res.setHeader('Content-Type', 'application/json');
-      res.end(JSON.stringify({ error:  "ERRO DE COMPILAÇÃO CUMPADI\n" }));
+      res.end(JSON.stringify({  error: "ERRO DE COMPILAÇÃO PAI!\n",
+                                stdout: null,
+                                stderr: null,
+                                return: null }));
       fs.unlink(file + '.c', function () {});
-      fs.unlink(file, function () {});
     }
     //caso contrário, rodamos o arquivo que acabamos de compilar
     else

@@ -7,8 +7,8 @@
 module.exports = function (file, stdin, res) {
   const exec = require('child_process').exec("timeout 5s ./" + file); // Executa o arquivo com timeout de 5s
   const fs = require('fs');
-  var out;
-  var err;
+  var out = null;
+  var err = null;
 
   // Entrada do arquivo será stdin + "\n"
   exec.stdin.write(stdin + "\n");
@@ -34,7 +34,8 @@ module.exports = function (file, stdin, res) {
 
     // Enviando a resposta
     res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify({  stdout: out,
+    res.end(JSON.stringify({  error: null,
+                              stdout: out,
                               stderr: err,
                               return: ret }));
   });
