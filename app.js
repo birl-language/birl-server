@@ -28,4 +28,4 @@ const server = http.createServer( function(req, res) {
 port = 3000;
 host = '127.0.0.1'; 
 server.listen(port, host);
-console.log('Server up at http://' + host + ':' + port);
+console.log('Listening at http://' + host + ':' + port);
