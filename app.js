@@ -8,6 +8,7 @@ var options = {
 }; 
 
 const server = https.createServer(options, function(req, res) {
+    console.log ("req");
    if (req.url == "/compile" && req.method == 'POST') {
       console.log("POST");
 
