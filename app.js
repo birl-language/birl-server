@@ -11,11 +11,13 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 app.get ('/', function (req, res) {
+  console.log ('-----------------------------------------');
   console.log ('GET AT \'/\'');
   res.send ('HELLO');
 });
 
 app.post('/compile', cors (corsOptions), function (req, res) {
+  console.log ('-----------------------------------------');
   console.log ('POST AT \'/compile\'');
 
   // Lendo o JSON
@@ -35,4 +37,5 @@ app.options('/compile', cors(corsOptions));
 
 var port = process.env.PORT || 3000;
 app.listen (port);
+console.log ('-----------------------------------------');
 console.log ('Listening at http://localhost:' + port);

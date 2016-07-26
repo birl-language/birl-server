@@ -22,20 +22,28 @@ module.exports = function (bCode, stdin, res) {
   const comp = require('./compiler.js');
   var rName = randomValueHex(15).toString();
 
-  fs.writeFile(rName + ".c", code, function (err) {
-    // se ocorrer erro, retorna JSON 
-    if (err) {
+  // Escrevendo a stdin
+  fs.writeFile(rName + ".txt", stdin, function (error) {
+    if (error) {
       res.setHeader('Content-Type', 'application/json');
       res.end(JSON.stringify({  error: "ERRO INTERNO PAI!\n",
                                 stdout: null,
-                                stderr: null,
-                                return: null }));
-      return;
+                              }));
     }
-
-    // caso contrário, compila e executa
-    process.nextTick(function () {
-      comp(rName, stdin, res);
+    // Escrevendo o código
+    fs.writeFile(rName + ".c", code, function (err) {
+      // se ocorrer erro, retorna JSON 
+      if (err) {
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify({  error: "ERRO INTERNO PAI!\n",
+                                  stdout: null,
+                                }));
+        return;
+      }
+      // caso contrário, compila e executa
+      process.nextTick(function () {
+        comp(rName, res);
+      });
     });
   });
 };

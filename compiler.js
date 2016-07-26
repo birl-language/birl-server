@@ -4,12 +4,12 @@
 * for 0, retorna a stdout do arquivo).
 *
 ***********************************************************************/
-module.exports = function (file, stdin, res) {
+module.exports = function (file, res) {
   const exec = require('child_process').exec;
   const fs = require('fs');
 
   // compila com o gcc
-  exec('gcc ' + file + '.c -o ' + file + ' && ./' + file, function (error, stdout, stderr) {
+  exec('gcc ' + file + '.c -o ' + file + ' && timeout 2s ./' + file + ' < ' + file + '.txt', function (error, stdout, stderr) {
     //se houver erro de compilação, respondemos a requisição com um erro.
     res.setHeader('Content-Type', 'application/json');
     if (error) {
