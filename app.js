@@ -1,8 +1,14 @@
-const http = require('http');
+const https = require('https');
 const fs = require('fs');
 const birl = require('./code_exec.js');
 
-const server = http.createServer( function(req, res) {
+var options = { 
+    key: fs.readFileSync('server-key.pem'), 
+    cert: fs.readFileSync('server-crt.pem'), 
+    ca: fs.readFileSync('ca-crt.pem'), 
+}; 
+
+const server = https.createServer(options, function(req, res) {
    if (req.url == "/compile" && req.method == 'POST') {
       console.log("POST");
 
@@ -28,4 +34,4 @@ const server = http.createServer( function(req, res) {
 port = 3000;
 host = '127.0.0.1'; 
 server.listen(port, host);
-console.log('Listening at http://' + host + ':' + port);
+console.log('Listening at https://' + host + ':' + port);
