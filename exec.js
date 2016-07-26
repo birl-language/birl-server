@@ -5,8 +5,9 @@
 *
 ***********************************************************************/
 module.exports = function (file, stdin, res) {
-  const exec = require('child_process').exec("timeout 5s ./" + file); // Executa o arquivo com timeout de 5s
+  const spawn = require('child_process').spawn; // Executa o arquivo com timeout de 5s
   const fs = require('fs');
+  const exec = spawn('./' + file);
   var out = null;
   var err = null;
 
@@ -31,28 +32,12 @@ module.exports = function (file, stdin, res) {
     // Apagando os arquivos criados
     fs.unlink(file + '.c', function () {});
     fs.unlink(file, function () {});
-
+    if (err == null) err = '';
     // Enviando a resposta
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify({  error: null,
-                              stdout: out,
-                              stderr: err,
+                              stdout: out.toString(),
+                              stderr: err.toString(),
                               return: ret }));
-  });
-
-  exec.stdout.on('error', function (data) {
-    console.log("ERROR: \"" + data + "\"");
-  });
-
-  exec.stderr.on('error', function (data) {
-    console.log("ERROR: \"" + data + "\"");
-  });
-
-  exec.stdout.on('error', function (data) {
-    console.log("ERROR: \"" + data + "\"");
-  });
-
-  exec.on('error', function (data) {
-    console.log("ERROR: \"" + data + "\"");
   });
 }
