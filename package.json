@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "crypto": "*",
-    "express": "*",
-    "express-logger": "*"
+    "express": "*"
   }
 }
