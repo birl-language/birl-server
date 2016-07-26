@@ -2,8 +2,10 @@ const app = require('express')();
 const fs = require('fs');
 const birl = require('./code_exec.js');
 app.get ('/', function (req, res) {
-  console.log ('GET AT \'/\'')
-})
+  console.log ('GET AT \'/\'');
+  res.send ('HELLO');
+});
+
 app.post('/compile', function (req, res) {
   console.log ('POST AT \'/compile\'');
 
