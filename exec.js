@@ -19,6 +19,10 @@ module.exports = function (file, stdin, res) {
   exec.stdout.on('data', function (data) {
     console.log("STDOUT: \"" + data + "\"");
     out = data;
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify({  error: null,
+                              stdout: out.toString(),
+                              return: ret }));
   });
 
   // Saída de erros do arquivo
