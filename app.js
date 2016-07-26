@@ -1,11 +1,10 @@
-const https = require('https');
+const https = require('http');
 const fs = require('fs');
 const birl = require('./code_exec.js');
 
 var options = { 
-    key: fs.readFileSync('server-key.pem'), 
-    cert: fs.readFileSync('server-crt.pem'), 
-    ca: fs.readFileSync('ca-crt.pem'), 
+    key:  fs.readFileSync('server-key.pem'), 
+    cert: fs.readFileSync('server-cert.pem')
 }; 
 
 const server = https.createServer(options, function(req, res) {
@@ -31,7 +30,7 @@ const server = https.createServer(options, function(req, res) {
    }
 });
 
-port = 3000;
+port = 4433;
 host = '127.0.0.1'; 
 server.listen(port, host);
 console.log('Listening at https://' + host + ':' + port);
