@@ -26,6 +26,12 @@ module.exports = function (file, stdin, res) {
     err = data;
   });
 
+  // Caso haja erro
+  exec.on ('error', function (err) {
+    console.log ('ERROR: ' + err);
+
+  });
+
   exec.on('close', function (ret) {
     console.log("Return: " + ret);
 
