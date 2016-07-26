@@ -3,15 +3,19 @@ const cors = require('cors');
 const fs   = require('fs');
 const birl = require('./code_exec.js');
 
+var corsOptions = {
+  origin: 'https://birl-language.github.io/'
+};
+
 // Permitindo CORS
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.get ('/', function (req, res) {
   console.log ('GET AT \'/\'');
   res.send ('HELLO');
 });
 
-app.post('/compile', cors (), function (req, res) {
+app.post('/compile', cors (corsOptions), function (req, res) {
   console.log ('POST AT \'/compile\'');
 
   // Lendo o JSON
@@ -27,7 +31,7 @@ app.post('/compile', cors (), function (req, res) {
   });
 });
 
-app.options('/compile', cors());
+app.options('/compile', cors(corsOptions));
 
 var port = process.env.PORT || 3000;
 app.listen (port);
