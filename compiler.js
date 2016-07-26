@@ -1,6 +1,7 @@
 /**********************************************************************
 * 
-* compiler.js: compila o arquivo file e chama o exec.js para executa-lo
+* compiler.js: compila o arquivo file e executa-o (se o retorno da execução
+* for 0, retorna a stdout do arquivo).
 *
 ***********************************************************************/
 module.exports = function (file, stdin, res) {
@@ -19,8 +20,8 @@ module.exports = function (file, stdin, res) {
     }
     else {
       console.log ("STDOUT: " + stdout);
-      res.end(JSON.stringify({  error: "",
-                                out: stdout
+      res.end(JSON.stringify({  error: null,
+                                stdout: stdout
                               }));
     }
   })
