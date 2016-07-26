@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "crypto": "*",
-    "express": "*"
+    "express": "*",
+    "cors": "*"
   }
 }
