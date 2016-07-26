@@ -26,7 +26,7 @@ module.exports = function (bCode, stdin, res) {
     // se ocorrer erro, retorna JSON 
     if (err) {
       res.setHeader('Content-Type', 'application/json');
-      res.end(JSON.stringify({  
+      res.end(JSON.stringify({  error: "ERRO INTERNO PAI!\n",
                                 stdout: null,
                                 stderr: null,
                                 return: null }));
