@@ -24,9 +24,9 @@ module.exports = function (file, stdin, res) {
     else {
       res.setHeader('Content-Type', 'application/json');
       res.end(JSON.stringify({  error: null,
-                              stdout: out.toString(),
-                              stderr: err.toString(),
-                              return: ret }));
+                              stdout: "VEM COM O MONSTRO",
+                              stderr: null,
+                              return: 1 }));
     }
   });
 };
