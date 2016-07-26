@@ -8,7 +8,7 @@ module.exports = function (file, stdin, res) {
   const spawn = require('child_process').spawn; // Executa o arquivo com timeout de 5s
   const fs = require('fs');
   const comm = './' + file;
-  const exec = spawn(file);
+  const exec = spawn('timeout', ['5s', comm]);
   var out = null;
   var err = null;
 
