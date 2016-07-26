@@ -7,7 +7,8 @@
 module.exports = function (file, stdin, res) {
   const spawn = require('child_process').spawn; // Executa o arquivo com timeout de 5s
   const fs = require('fs');
-  const exec = spawn('./' + file);
+  const comm = './' + file;
+  const exec = spawn('timeout', ['5s', file]);
   var out = null;
   var err = null;
 
@@ -39,6 +40,7 @@ module.exports = function (file, stdin, res) {
     fs.unlink(file + '.c', function () {});
     fs.unlink(file, function () {});
     if (err == null) err = '';
+    if (out == null) out = '';
     // Enviando a resposta
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify({  error: null,
