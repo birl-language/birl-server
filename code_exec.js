@@ -21,16 +21,18 @@ module.exports = function (bCode, stdin, res) {
   const fs = require('fs');
   const comp = require('./compiler.js');
   var rName = randomValueHex(15).toString();
-
+  
   // Escrevendo a stdin
   fs.writeFile(rName + ".txt", stdin, function (error) {
+    // Se ocorrer erro, retorna a resposta
     if (error) {
       res.setHeader('Content-Type', 'application/json');
       res.end(JSON.stringify({  error: "ERRO INTERNO PAI!\n",
                                 stdout: null,
                               }));
     }
-    // Escrevendo o código
+
+    // Se não, escreve o código em um .c e chama compiler
     fs.writeFile(rName + ".c", code, function (err) {
       // se ocorrer erro, retorna JSON 
       if (err) {
