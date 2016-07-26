@@ -19,10 +19,6 @@ module.exports = function (file, stdin, res) {
   exec.stdout.on('data', function (data) {
     console.log("STDOUT: \"" + data + "\"");
     out = data;
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify({  error: null,
-                              stdout: out.toString()
-                            }));
   });
 
   // Saída de erros do arquivo
@@ -37,13 +33,12 @@ module.exports = function (file, stdin, res) {
 
   });
 
- /*
   exec.on('close', function (ret) {
     console.log("Return: " + ret);
 
     // Apagando os arquivos criados
-    //fs.unlink(file + '.c', function () {});
-    //fs.unlink(file, function () {});
+    fs.unlink(file + '.c', function () {});
+    fs.unlink(file, function () {});
     if (err == null) err = '';
     if (out == null) out = '';
     // Enviando a resposta
@@ -53,5 +48,4 @@ module.exports = function (file, stdin, res) {
                               stderr: err.toString(),
                               return: ret }));
   });
-  */
 }
