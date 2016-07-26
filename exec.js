@@ -37,8 +37,8 @@ module.exports = function (file, stdin, res) {
     console.log("Return: " + ret);
 
     // Apagando os arquivos criados
-    fs.unlink(file + '.c', function () {});
-    fs.unlink(file, function () {});
+    //fs.unlink(file + '.c', function () {});
+    //fs.unlink(file, function () {});
     if (err == null) err = '';
     if (out == null) out = '';
     // Enviando a resposta

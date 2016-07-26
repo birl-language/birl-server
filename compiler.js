@@ -21,12 +21,7 @@ module.exports = function (file, stdin, res) {
       fs.unlink(file + '.c', function () {});
     }
     //caso contrário, rodamos o arquivo que acabamos de compilar
-    else {
-      res.setHeader('Content-Type', 'application/json');
-      res.end(JSON.stringify({  error: "",
-                              stdout: "VEM COM O MONSTRO",
-                              stderr: null,
-                              return: 1 }));
-    }
+    else
+      run(file, stdin, res);
   });
 };
