@@ -2,7 +2,10 @@
   "name": "birl-compiler",
   "description": "BIRL Compiler",
   "version": "0.0.1",
-  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "crypto": "*"
   }

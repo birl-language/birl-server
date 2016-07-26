@@ -30,7 +30,6 @@ const server = https.createServer(options, function(req, res) {
    }
 });
 
-port = 4433;
-host = '127.0.0.1'; 
-server.listen(port, host);
-console.log('Listening at https://' + host + ':' + port);
+var port = process.env.PORT || 8080;
+server.listen(port);
+console.log('Listening at https://localhost:' + port);
