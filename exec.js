@@ -39,4 +39,20 @@ module.exports = function (file, stdin, res) {
                               stderr: err,
                               return: ret }));
   });
+
+  exec.stdout.on('error', function (data) {
+    console.log("ERROR: \"" + data + "\"");
+  });
+
+  exec.stderr.on('error', function (data) {
+    console.log("ERROR: \"" + data + "\"");
+  });
+
+  exec.stdout.on('error', function (data) {
+    console.log("ERROR: \"" + data + "\"");
+  });
+
+  exec.on('error', function (data) {
+    console.log("ERROR: \"" + data + "\"");
+  });
 }
