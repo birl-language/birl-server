@@ -37,11 +37,12 @@ console.log('Listening at https://localhost:' + port);*/
 
 var http = require('http');
 var express = require("express");
+var logger = require('express-logger');
 
 var app = express();
 
 app.set('port', process.env.PORT || 3000);
-app.use(express.logger());
+app.use(logger());
 
 app.get('/', function(request, response) {
   console.log('[support dash] processing get request')
