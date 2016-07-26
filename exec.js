@@ -21,8 +21,8 @@ module.exports = function (file, stdin, res) {
     out = data;
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify({  error: null,
-                              stdout: out.toString(),
-                              return: ret }));
+                              stdout: out.toString()
+                            }));
   });
 
   // Saída de erros do arquivo
@@ -37,6 +37,7 @@ module.exports = function (file, stdin, res) {
 
   });
 
+ /*
   exec.on('close', function (ret) {
     console.log("Return: " + ret);
 
@@ -52,4 +53,5 @@ module.exports = function (file, stdin, res) {
                               stderr: err.toString(),
                               return: ret }));
   });
+  */
 }
