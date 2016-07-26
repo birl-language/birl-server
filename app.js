@@ -4,7 +4,7 @@ const fs   = require('fs');
 const birl = require('./code_exec.js');
 
 var corsOptions = {
-  origin: 'https://birl-language.github.io/'
+  origin: 'https://birl-language.github.io'
 };
 
 // Permitindo CORS
