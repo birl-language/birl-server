@@ -24,6 +24,10 @@ module.exports = function (birlCode) {
     code = code.replace(/(N[AÃ]O VAI DAR N[AÃ]O)(?=(?:[^"]|"[^"]*")*$)/g, '} else {');
     //Traduzindo else if
     code = code.replace(/(QUE NUM VAI DAR O QUE\?)(?=(?:[^"]|"[^"]*")*$)(.*)/g, '} else if $2 {');
+    //Traduzindo switch
+    code = code.replace(/(AQUI EH BODY BUILDER)(?=(?:[^"]|"[^"]*")*$)(.*)/g, 'switch $2 {');
+    code = code.replace(/(EITA PORRA)(?=(?:[^"]|"[^"]*")*$)/g, 'default : ');
+    code = code.replace(/(PORRA)(?=(?:[^"]|"[^"]*")*$)(.*?)SAI FILHO DA PUTA(.*)/g, 'case $2 : $3 break;');
     //Traduzindo while
     code = code.replace(/(NEGATIVA BAMBAM)(?=(?:[^"]|"[^"]*")*$)(.*)/g, 'while $2 {');
     //Traduzindo for
