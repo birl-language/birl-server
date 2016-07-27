@@ -1,5 +1,5 @@
 /**********************************************************************
-* 
+*
 * birlToC.js: recebe um código em BIRL e retorna o mesmo traduzido
 * para C.
 *
@@ -11,7 +11,7 @@ module.exports = function (birlCode) {
     var code = birlCode;
 
     //Traduzindo a MAIN
-    var code = code.replace(/(HORA DO SHOW)(?=(?:[^"]|"[^"]*")*$)/g, 'int main (void) {'); 
+    var code = code.replace(/(HORA DO SHOW)(?=(?:[^"]|"[^"]*")*$)/g, 'int main (void) {');
     //Traduzindo o BIRL
     code = code.replace(/(BIRL)(?=(?:[^"]|"[^"]*")*$)/g, '}');
     //Traduzindo printf
@@ -36,7 +36,10 @@ module.exports = function (birlCode) {
 
     //Removendo #includes, para evitar que o usuário possa incluir stdlib
     code = code.replace(/(#include .*)/g, '');
-    
+
+    //Traduzindo o include
+    code = code.replace(/(TA SAINDO DA JAULA)(?=(?:[^"]|"[^"]*")*$)(.*)/g, '#include $2');
+
     //Colocando as bibliotecas
     code = "#include <stdio.h>\n#include <math.h>\n\n" + code;
 
