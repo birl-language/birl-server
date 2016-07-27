@@ -24,6 +24,7 @@ module.exports = function (birlCode) {
     code = code.replace(/(N[AÃ]O VAI DAR N[AÃ]O)(?=(?:[^"]|"[^"]*")*$)/g, '} else {');
     //Traduzindo else if
     code = code.replace(/(QUE NUM VAI DAR O QUE\?)(?=(?:[^"]|"[^"]*")*$)(.*)/g, '} else if $2 {');
+    code = code.replace(/(QUE N[AÃ]O VAI DAR O QUE\?)(?=(?:[^"]|"[^"]*")*$)(.*)/g, '} else if $2 {');
     //Traduzindo while
     code = code.replace(/(NEGATIVA BAMBAM)(?=(?:[^"]|"[^"]*")*$)(.*)/g, 'while $2 {');
     //Traduzindo for
@@ -47,6 +48,6 @@ module.exports = function (birlCode) {
     
     //Colocando as bibliotecas
     code = "#include <stdio.h>\n#include <math.h>\n\n" + code;
-    
+
     return code;
 }
