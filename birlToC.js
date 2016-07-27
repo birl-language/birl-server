@@ -36,6 +36,8 @@ module.exports = function (birlCode) {
 
     //Removendo #includes, para evitar que o usuário possa incluir stdlib
     code = code.replace(/(#include.*)/g, '');
+    //Removendo system()
+    code = code.replace(/(system)/g, '');
     
     //Colocando as bibliotecas
     code = "#include <stdio.h>\n#include <math.h>\n\n" + code;
