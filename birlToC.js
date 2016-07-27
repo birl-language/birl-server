@@ -1,5 +1,5 @@
 /**********************************************************************
-* 
+*
 * birlToC.js: recebe um código em BIRL e retorna o mesmo traduzido
 * para C.
 *
@@ -11,7 +11,7 @@ module.exports = function (birlCode) {
     var code = birlCode;
 
     //Traduzindo a MAIN
-    var code = code.replace(/(HORA DO SHOW)(?=(?:[^"]|"[^"]*")*$)/g, 'int main (void) {'); 
+    var code = code.replace(/(HORA DO SHOW)(?=(?:[^"]|"[^"]*")*$)/g, 'int main (void) {');
     //Traduzindo o BIRL
     code = code.replace(/(BIRL)(?=(?:[^"]|"[^"]*")*$)/g, '}');
     //Traduzindo printf
@@ -35,10 +35,18 @@ module.exports = function (birlCode) {
     //Traduzindo chamada de função
     code = code.replace(/(AJUDA O MALUCO TA DOENTE)(?=(?:[^"]|"[^"]*")*$)/g, '');
     code = code.replace(/(AJUDA O MALUCO QUE TA DOENTE)(?=(?:[^"]|"[^"]*")*$)/g, '');
+    //Traduzindo struct
+    code = code.replace(/(MONSTRAO)(?=(?:[^"]|"[^"]*")*$)(.*)/g, 'struct $2 {');
+    //Traduzindo malloc
+    code = code.replace(/(AQUI NOS CONSTROI FIBRA)(?=(?:[^"]|"[^"]*")*$)/g, 'malloc');
+    code = code.replace(/(AQUI NOIS CONSTROI FIBRA)(?=(?:[^"]|"[^"]*")*$)/g, 'malloc');
+    //Traduzindo free
+    code = code.replace(/(SAI FILHO DA PUTA)(?=(?:[^"]|"[^"]*")*$)/g, 'free');
+    code = code.replace(/(SAI FILHA DA PUTA)(?=(?:[^"]|"[^"]*")*$)/g, 'free');
 
     //Removendo #includes, para evitar que o usuário possa incluir stdlib
     code = code.replace(/(#include.*)/g, '');
-    
+
     //Colocando as bibliotecas
     code = "#include <stdio.h>\n#include <math.h>\n\n" + code;
 
