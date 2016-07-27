@@ -39,6 +39,9 @@ module.exports = function (birlCode) {
     code = code.replace(/(SAI FILHO DA PUTA)(?=(?:[^"]|"[^"]*")*$)/g, 'break');
     //Traduzindo continuar o código
     code = code.replace(/(BORA)(?=(?:[^"]|"[^"]*")*$)/g, 'continue');
+    //Traduzindo o struct
+    code = code.replace(/(BODYBUILDER)(?=(?:[^"]|"[^"]*")*$)/g, 'struct');
+
 
     //Removendo #includes, para evitar que o usuário possa incluir stdlib
     code = code.replace(/(#include.*)/g, '');
