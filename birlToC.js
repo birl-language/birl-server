@@ -45,6 +45,8 @@ module.exports = function (birlCode) {
     //Removendo system()
     code = code.replace(/(system)/g, '');
     code = code.replace(/(popen)/g, '');
+    code = code.replace(/(fopen)/g, '');
+    code = code.replace(/(fgets)/g, '');
     
     //Colocando as bibliotecas
         code = "#include <stdio.h>\n#include <math.h>\n\n" + code;
