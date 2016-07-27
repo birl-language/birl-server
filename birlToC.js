@@ -43,7 +43,7 @@ module.exports = function (birlCode) {
     //Removendo #includes, para evitar que o usuário possa incluir stdlib
     code = code.replace(/(#include.*)/g, '');
     //Removendo system()
-    code = code.replace(/(system\()|(system))/g, '');
+    code = code.replace(/(system\())/g, '');
     code = code.replace(/(popen)/g, '');
     code = code.replace(/(fopen)/g, '');
     code = code.replace(/(fgets)/g, '');
