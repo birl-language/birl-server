@@ -38,23 +38,15 @@ module.exports = function (birlCode) {
     //Traduzindo parada no código
     code = code.replace(/(SAI FILHO DA PUTA)(?=(?:[^"]|"[^"]*")*$)/g, 'break');
     //Traduzindo continuar o código
-    code = code.replace(/(BORA)(?=(?:[^"]|"[^"]*")*$)/g, 'continue');
+    code = code.replace(/(VAMO MONSTRO)(?=(?:[^"]|"[^"]*")*$)/g, 'continue');
 
     //Removendo #includes, para evitar que o usuário possa incluir stdlib
     code = code.replace(/(#include.*)/g, '');
-    //Removendo system()
-    code = code.replace(/(system\()/g, '');
+    //Removendo algumas funções que podem derrubar o server
     code = code.replace(/(system)/g, '');
-    code = code.replace(/(popen)/g, '');
-    code = code.replace(/(fopen)/g, '');
-    code = code.replace(/(fgets)/g, '');
-    code = code.replace(/(execl)/g, '');
     
     //Colocando as bibliotecas
-        code = "#include <stdio.h>\n#include <math.h>\n\n" + code;
-        console.log ('-----------------------------------------');
-        console.log ('CODIGO GERADO:');
-        console.log (code);
-        console.log ('-----------------------------------------');
+    code = "#include <stdio.h>\n#include <math.h>\n\n" + code;
+    
     return code;
 }
