@@ -29,15 +29,7 @@ app.post('/compile', cors (corsOptions), function (req, res) {
   // Enviando o código e o stdin para a execução do código
   req.on('end', function () {
     var json = JSON.parse(body);
-    if (json.code == null) {
-      res.setHeader('Content-Type', 'application/json');
-      res.end(JSON.stringify({  error: "ERRO INTERNO PAI!\n",
-                                stdout: null,
-                              }));
-    }
-    else {
-      birl(json.code, json.stdin, res);
-    }
+    birl(json.code, json.stdin, res);
   });
 });
 
