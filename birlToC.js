@@ -35,6 +35,11 @@ module.exports = function (birlCode) {
     //Traduzindo chamada de função
     code = code.replace(/(AJUDA O MALUCO TA DOENTE)(?=(?:[^"]|"[^"]*")*$)/g, '');
     code = code.replace(/(AJUDA O MALUCO QUE TA DOENTE)(?=(?:[^"]|"[^"]*")*$)/g, '');
+    //Traduzindo Switch-Case
+    code = code.replace(/(DERRUBA ARVORE\?)(?=(?:[^"]|"[^"]*")*$)(.*)/g, 'switch $2 {');
+    code = code.replace(/(ARVORE DO PARQUE IBIRAPUERA)(?=(?:[^"]|"[^"]*")*$)/g, 'default ');
+    code = code.replace(/(ARVORE)(?=(?:[^"]|"[^"]*")*$)/g, 'case ');
+    code = code.replace(/(EH O CARALHO)(?=(?:[^"]|"[^"]*")*$)/g, 'break; ');
 
     //Removendo #includes, para evitar que o usuário possa incluir stdlib
     code = code.replace(/(#include.*)/g, '');
