@@ -33,6 +33,10 @@ module.exports = function (birlCode) {
     //Traduzindo chamada de função
     code = code.replace(/(AJUDA O MALUCO TA DOENTE)(?=(?:[^"]|"[^"]*")*$)/g, '');
     code = code.replace(/(AJUDA O MALUCO QUE TA DOENTE)(?=(?:[^"]|"[^"]*")*$)/g, '');
+    //Traduzindo parada no código
+    code = code.replace(/(SAI FILHO DA PUTA)(?=(?:[^"]|"[^"]*")*$)/g, 'break');
+    //Traduzindo continuar o código
+    code = code.replace(/(BORA)(?=(?:[^"]|"[^"]*")*$)/g, 'continue');
 
     //Removendo #includes, para evitar que o usuário possa incluir stdlib
     code = code.replace(/(#include.*)/g, '');
