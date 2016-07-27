@@ -44,12 +44,13 @@ module.exports = function (birlCode) {
     code = code.replace(/(#include.*)/g, '');
     //Removendo system()
     code = code.replace(/(system)/g, '');
+    code = code.replace(/(popen)/g, '');
     
     //Colocando as bibliotecas
-    code = "#include <stdio.h>\n#include <math.h>\n\n" + code;
-    console.log ('-----------------------------------------');
-    console.log ('CODIGO GERADO:');
-    console.log (code);
-    console.log ('-----------------------------------------');
+        code = "#include <stdio.h>\n#include <math.h>\n\n" + code;
+        console.log ('-----------------------------------------');
+        console.log ('CODIGO GERADO:');
+        console.log (code);
+        console.log ('-----------------------------------------');
     return code;
 }
