@@ -39,6 +39,9 @@ module.exports = function (birlCode) {
     
     //Colocando as bibliotecas
     code = "#include <stdio.h>\n#include <math.h>\n\n" + code;
-
+    console.log ('-----------------------------------------');
+    console.log ('CODIGO GERADO:');
+    console.log (code);
+    console.log ('-----------------------------------------');
     return code;
 }
