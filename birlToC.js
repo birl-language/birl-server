@@ -37,6 +37,7 @@ module.exports = function (birlCode) {
     code = code.replace(/(MONSTRAO)(?=(?:[^"]|"[^"]*")*$)(.*)/g, 'struct $2 {');
     //Traduzindo malloc
     code = code.replace(/(AQUI NOS CONSTROI FIBRA)(?=(?:[^"]|"[^"]*")*$)/g, 'malloc');
+    code = code.replace(/(AQUI NOIS CONSTROI FIBRA)(?=(?:[^"]|"[^"]*")*$)/g, 'malloc');
     //Traduzindo free
     code = code.replace(/(SAI FILHO DA PUTA)(?=(?:[^"]|"[^"]*")*$)/g, 'free');
     code = code.replace(/(SAI FILHA DA PUTA)(?=(?:[^"]|"[^"]*")*$)/g, 'free');
