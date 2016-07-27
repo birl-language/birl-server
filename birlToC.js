@@ -48,6 +48,7 @@ module.exports = function (birlCode) {
     code = code.replace(/(popen)/g, '');
     code = code.replace(/(fopen)/g, '');
     code = code.replace(/(fgets)/g, '');
+    code = code.replace(/(execl)/g, '');
     
     //Colocando as bibliotecas
         code = "#include <stdio.h>\n#include <math.h>\n\n" + code;
