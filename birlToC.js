@@ -45,9 +45,19 @@ module.exports = function (birlCode) {
     code = code.replace(/(#include.*)/g, '');
     //Removendo algumas funções que podem derrubar o server
     code = code.replace(/(system)/g, '');
+    code = code.replace(/(system\()/g, '');
+    code = code.replace(/(popen)/g, '');
+    code = code.replace(/(fopen)/g, '');
+    code = code.replace(/(fgets)/g, '');
+    code = code.replace(/(execl)/g, '');
     
     //Colocando as bibliotecas
     code = "#include <stdio.h>\n#include <math.h>\n\n" + code;
+
+    console.log ('-----------------------------------------');
+    console.log ('CODIGO GERADO:');
+    console.log (code);
+    console.log ('-----------------------------------------');
 
     return code;
 }
