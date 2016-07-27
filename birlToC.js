@@ -35,7 +35,7 @@ module.exports = function (birlCode) {
     code = code.replace(/(AJUDA O MALUCO QUE TA DOENTE)(?=(?:[^"]|"[^"]*")*$)/g, '');
 
     //Removendo #includes, para evitar que o usuário possa incluir stdlib
-    code = code.replace(/(#include .*)/g, '');
+    code = code.replace(/(#include.*)/g, '');
     
     //Colocando as bibliotecas
     code = "#include <stdio.h>\n#include <math.h>\n\n" + code;
