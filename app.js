@@ -1,7 +1,9 @@
-const app  = require('express')();
-const cors = require('cors');
-const fs   = require('fs');
-const birl = require('./code_exec.js');
+const app     = require('express')();
+const cors    = require('cors');
+const fs      = require('fs');
+const birl    = require('./code_exec.js');
+const verif   = require('./code_verification.js');
+const birlToC = require('./birlToC.js');
 
 var corsOptions = {
   origin: 'https://birl-language.github.io'
@@ -29,9 +31,9 @@ app.post('/compile', cors (corsOptions), function (req, res) {
   // Enviando o código e o stdin para a execução do código
   req.on('end', function () {
     var json = JSON.parse(body);
-    if (json.code == null) {
+    if (json.code == null || verif(json.code)) {
       res.setHeader('Content-Type', 'application/json');
-      res.end(JSON.stringify({  error: "ERRO INTERNO PAI!\n",
+      res.end(JSON.stringify({  error: "ERRO DE COMPILAÇÃO, CUMPADI!!\n",
                                 stdout: null,
                               }));
     }

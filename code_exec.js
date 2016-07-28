@@ -16,10 +16,10 @@ function randomValueHex (len) {
 
 
 module.exports = function (bCode, stdin, res) {
-  //Criando o arquivo .c com nome aleatório
-  const code = require('./birlToC.js')(bCode);
-  const fs = require('fs');
+  const fs   = require('fs');
   const comp = require('./compiler.js');
+  const code = require('./birlToC.js')(bCode);
+
   var rName = randomValueHex(15).toString();
   
   // Escrevendo a stdin
@@ -32,7 +32,8 @@ module.exports = function (bCode, stdin, res) {
                               }));
     }
 
-    // Se não, escreve o código em um .c e chama compiler
+    // Se não, escreve o código em um .c com nome aleatorio
+    //e chama compiler
     fs.writeFile(rName + ".c", code, function (err) {
       // se ocorrer erro, retorna JSON 
       if (err) {

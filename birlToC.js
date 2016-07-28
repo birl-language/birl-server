@@ -10,6 +10,8 @@ module.exports = function (birlCode) {
     //de aspas.
     var code = birlCode;
 
+    if (code == null) return "";
+
     //Traduzindo a MAIN
     code = code.replace(/(HORA DO SHOW)(?=(?:[^"]|"[^"]*")*$)/g, 'int main (void) {'); 
     //Traduzindo o BIRL
@@ -34,22 +36,12 @@ module.exports = function (birlCode) {
     //Traduzindo retorno da função
     code = code.replace(/(BORA CUMPAD[EI])(?=(?:[^"]|"[^"]*")*$)/g, 'return');
     //Traduzindo chamada de função
-    code = code.replace(/(AJUDA O MALUCO TA DOENTE)(?=(?:[^"]|"[^"]*")*$)/g, '');
-    code = code.replace(/(AJUDA O MALUCO QUE TA DOENTE)(?=(?:[^"]|"[^"]*")*$)/g, '');
+    code = code.replace(/(AJUDA O MALUCO TA DOENTE)(?=(?:[^"]|"[^"]*")*$)/g, ' ');
+    code = code.replace(/(AJUDA O MALUCO QUE TA DOENTE)(?=(?:[^"]|"[^"]*")*$)/g, ' ');
     //Traduzindo parada no código
     code = code.replace(/(SAI FILH[OA] DA PUTA)(?=(?:[^"]|"[^"]*")*$)/g, 'break');
     //Traduzindo continuar o código
     code = code.replace(/(VAMO MONSTRO)(?=(?:[^"]|"[^"]*")*$)/g, 'continue');
-
-    //Removendo #includes, para evitar que o usuário possa incluir stdlib
-    code = code.replace(/(#include.*)/g, '');
-    //Removendo algumas funções que podem derrubar o server
-    code = code.replace(/(system)/g, '');
-    code = code.replace(/(system\()/g, '');
-    code = code.replace(/(popen)/g, '');
-    code = code.replace(/(fopen)/g, '');
-    code = code.replace(/(fgets)/g, '');
-    code = code.replace(/(execl)/g, '');
     
     //Colocando as bibliotecas
     code = "#include <stdio.h>\n#include <math.h>\n\n" + code;

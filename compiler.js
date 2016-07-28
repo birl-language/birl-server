@@ -14,7 +14,7 @@ module.exports = function (file, res) {
     res.setHeader('Content-Type', 'application/json');
     if (error) {
       console.log ("ERROR: " + error);
-      res.end(JSON.stringify({  error: "ERRO DE COMPILAÇÃO PAI!\n",
+      res.end(JSON.stringify({  error: "CODEI PRA CARALHO MAS NÃO COMPILOU!\n",
                                 stdout: null
                               }));
     }
