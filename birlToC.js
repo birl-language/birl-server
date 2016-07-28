@@ -42,7 +42,7 @@ module.exports = function (birlCode) {
     code = code.replace(/(VAMO MONSTRO)(?=(?:[^"]|"[^"]*")*$)/g, 'continue');
 
     //Removendo #includes, para evitar que o usuário possa incluir stdlib
-    code = code.replace(/(#include.*)/g, '');
+    code = code.replace(/(#\s*include.*)/g, '');
     //Removendo algumas funções que podem derrubar o server
     code = code.replace(/(system)/g, '');
     code = code.replace(/(system\()/g, '');
