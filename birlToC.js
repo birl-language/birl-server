@@ -40,7 +40,10 @@ module.exports = function (birlCode) {
     code = code.replace(/(SAI FILH[OA] DA PUTA)(?=(?:[^"]|"[^"]*")*$)/g, 'break');
     //Traduzindo continuar o código
     code = code.replace(/(VAMO MONSTRO)(?=(?:[^"]|"[^"]*")*$)/g, 'continue');
-
+    //Traduzindo o tipo int
+    code = code.replace(/(EH TREZE PORRA)(?=(?:[^"]|"[^"]*")*$)/g, 'int');
+    
+    
     //Removendo #includes, para evitar que o usuário possa incluir stdlib
     code = code.replace(/(#include.*)/g, '');
     //Removendo algumas funções que podem derrubar o server
