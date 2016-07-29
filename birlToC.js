@@ -42,6 +42,12 @@ module.exports = function (birlCode) {
     code = code.replace(/(SAI FILH[OA] DA PUTA)(?=(?:[^"]|"[^"]*")*$)/g, 'break');
     //Traduzindo continuar o código
     code = code.replace(/(VAMO MONSTRO)(?=(?:[^"]|"[^"]*")*$)/g, 'continue');
+    //Traduzindo o switch
+    code = code.replace(/(DERRUBAR [ÁA]RVORES)(?=(?:[^"]|"[^"]*")*$)(.*)/g, 'switch $2 {');
+    //Traduzindo os cases
+    code = code.replace(/([ÁA]RVORE)(?=(?:[^"]|"[^"]*")*$)(.*)/g, 'case $2 :');
+    //Trauzindo o default
+    code = code.replace(/([ÁA]RVORE DO PARQUE IBIRAPUERA)(?=(?:[^"]|"[^"]*")*$)(.*)/g, 'default $2 :');
     
     //Colocando as bibliotecas
     code = "#include <stdio.h>\n#include <math.h>\n\n" + code;
