@@ -42,7 +42,16 @@ module.exports = function (birlCode) {
     code = code.replace(/(SAI FILH[OA] DA PUTA)(?=(?:[^"]|"[^"]*")*$)/g, 'break');
     //Traduzindo continuar o código
     code = code.replace(/(VAMO MONSTRO)(?=(?:[^"]|"[^"]*")*$)/g, 'continue');
-    
+
+    //Traduzindo os tipos de dados
+    code = code.replace(/(FRANGO)(?=(?:[^"]|"[^"]*")*$)/g, 'char');
+    code = code.replace(/(MONSTRO)(?=(?:[^"]|"[^"]*")*$)/g, 'int');
+    code = code.replace(/(MONSTRINHO)(?=(?:[^"]|"[^"]*")*$)/g, 'short');
+    code = code.replace(/(MONSTR[ÃA]O)(?=(?:[^"]|"[^"]*")*$)/g, 'long');
+    code = code.replace(/(TRAP[EÉ]ZIO DESCENDENTE)(?=(?:[^"]|"[^"]*")*$)/g, 'double');
+    code = code.replace(/(TRAP[EÉ]ZIO)(?=(?:[^"]|"[^"]*")*$)/g, 'float');
+    code = code.replace(/(B[IÍ]CEPS)(?=(?:[^"]|"[^"]*")*$)/g, 'unsigned');
+
     //Colocando as bibliotecas
     code = "#include <stdio.h>\n#include <math.h>\n\n" + code;
 
