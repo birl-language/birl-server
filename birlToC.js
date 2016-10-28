@@ -45,7 +45,7 @@ module.exports = function (birlCode) {
     //Traduzindo switch
     code = code.replace(/(VAI SUBIR EM ARVORE [EÉ] O CARALHO)(?=(?:[^"]|"[^"]*")*$)/g, 'switch $2{');
     //Traduzindo case
-    code = code.replace(/(VOU DERRUBAR TODAS ESSAS ARVORES)(?=(?:[^"]|"[^"]*")*$)/g, 'case $2');
+    code = code.replace(/(VOU DERRUBAR TODAS ESSAS ARVORES)(?=(?:[^"]|"[^"]*")*$)/g, 'case');
     //Traduzindo default
     code = code.replace(/(TA COMIGO PORRA)(?=(?:[^"]|"[^"]*")*$)/g, 'default:');
 
