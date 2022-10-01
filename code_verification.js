@@ -5,5 +5,5 @@
 *
 ***********************************************************************/
 module.exports = function (birlCode) {
-    return birlCode.match(/((#.*include.*)|(system)|(popen)|(fopen)|(fgets)|(execl))/g);
+    return birlCode.match(/([\\]\n|(#.*define)|(printf)|(puts)|(putchar)|(#.*include)|(system)|(popen)|(fopen)|(fgets)|(execl))/g);
 }
