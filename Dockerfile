@@ -1,5 +1,5 @@
 FROM node:alpine
-RUN apk add --update nodejs npm
+RUN apk add --update build-base nodejs npm
 WORKDIR /app
 COPY package*.json ./
 RUN npm i

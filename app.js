@@ -9,7 +9,7 @@ var corsOptions = {
 };
 
 // Permitindo CORS
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.get ('/', function (req, res) {
     console.log ('-----------------------------------------');
@@ -17,7 +17,7 @@ app.get ('/', function (req, res) {
     res.send ('HELLO');
 });
 
-app.post('/compile', cors (corsOptions), function (req, res) {
+app.post('/compile', cors (), function (req, res) {
     console.log ('-----------------------------------------');
     console.log ('POST AT \'/compile\'');
 
