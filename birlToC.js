@@ -35,6 +35,7 @@ module.exports = function (birlCode) {
     code = code.replace(/(O[H]? O HOM[EI][M]? A[IÍ] PO[ \t]*\()(?=(?:[^"]|"[^"]*")*$)(.*)(\))/g, '$2 {');
     //Traduzindo retorno da função
     code = code.replace(/(BORA CUMPAD[EI])(?=(?:[^"]|"[^"]*")*$)/g, 'return');
+    code = code.replace(/(T[AÁ] SAINDO DA JAULA O MONSTRO)(?=(?:[^"]|"[^"]*")*$)/g, 'return');
     //Traduzindo chamada de função
     code = code.replace(/(AJUDA O MALUCO TA DOENTE)(?=(?:[^"]|"[^"]*")*$)/g, ' ');
     code = code.replace(/(AJUDA O MALUCO QUE TA DOENTE)(?=(?:[^"]|"[^"]*")*$)/g, ' ');
