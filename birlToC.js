@@ -42,6 +42,10 @@ module.exports = function (birlCode) {
     code = code.replace(/(SAI FILH[OA] DA PUTA)(?=(?:[^"]|"[^"]*")*$)/g, 'break');
     //Traduzindo continuar o código
     code = code.replace(/(VAMO MONSTRO)(?=(?:[^"]|"[^"]*")*$)/g, 'continue');
+    // Traduzindo o "do" do "do...while"
+    code = code.replace(/(EH TREZE MEMO CARALHO)(?=(?:[^"]|"[^"]*")*$)/g, 'do {');
+    // Traduzino o "while" do "do...whlie"
+    code = code.replace(/(EH TREZE PORRA\?)(?=(?:[^"]|"[^"]*")*$)(.*)/g, '} while $2;');
 
     //Traduzindo os tipos de dados
     code = code.replace(/(FRANGO)(?=(?:[^"]|"[^"]*")*$)/g, 'char');
